@@ -85,12 +85,8 @@ public class UpdatesRequestExecutor {
         log.info("already parsed urls");
 
           if (!urls.isEmpty() ) {
-                int count = urls.size();
-                if (urls.size() > 2){
-                    count = count /2;
-                }
-                if ( count > 3 ) count = 3;
-                urls = urls.subList(0, count);
+
+                urls = urls.subList(0, 1);
               for (String element : urls) {
                   messageSender.sendImageFromChat(element, ""+chat_id, "");
               }
