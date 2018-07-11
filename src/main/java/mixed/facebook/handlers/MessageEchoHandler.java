@@ -2,7 +2,6 @@ package mixed.facebook.handlers;
 
 import com.github.messenger4j.Messenger;
 import com.github.messenger4j.webhook.event.MessageEchoEvent;
-
 import mixed.facebook.senders.textmessage.UserDetailsSender;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

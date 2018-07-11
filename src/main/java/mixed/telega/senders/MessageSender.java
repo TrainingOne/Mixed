@@ -39,7 +39,7 @@ public class MessageSender {
         } catch (TelegramApiRequestException exception) {
             log.warn(exception.getApiResponse());
         } catch (TelegramApiException e) {
-            e.printStackTrace();
+            log.warn(e.getMessage());
         }
     }
 
@@ -49,7 +49,7 @@ public class MessageSender {
             FuriousBot furiousBot = new FuriousBot();
             furiousBot.execute(new SendMessage().setChatId(chat_id).setText(text));
         } catch (TelegramApiException e){
-            e.printStackTrace();
+            log.warn(e.getMessage());
             log.info(e.getCause().toString());
         }
     }
@@ -59,7 +59,7 @@ public class MessageSender {
             FuriousBot furiousBot = new FuriousBot();
             furiousBot.execute(msg);
         } catch (TelegramApiException e){
-            e.printStackTrace();
+            log.warn(e.getMessage());
             log.info(e.getCause().toString());
         }
     }
@@ -101,7 +101,7 @@ public class MessageSender {
             FuriousBot furiousBot = new FuriousBot();
             furiousBot.execute(sendMessage); // Sending our message object to user
         } catch (TelegramApiException e) {
-            e.printStackTrace();
+            log.warn(e.getMessage());
         }
 
     }

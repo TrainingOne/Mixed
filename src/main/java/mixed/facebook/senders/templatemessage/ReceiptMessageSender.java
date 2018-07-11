@@ -12,8 +12,6 @@ import com.github.messenger4j.send.message.template.receipt.Adjustment;
 import com.github.messenger4j.send.message.template.receipt.Item;
 import com.github.messenger4j.send.message.template.receipt.Summary;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.net.MalformedURLException;
 import java.net.URL;

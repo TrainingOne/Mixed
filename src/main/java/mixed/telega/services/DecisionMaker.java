@@ -2,10 +2,8 @@ package mixed.telega.services;
 
 
 import lombok.extern.slf4j.Slf4j;
-import mixed.telega.FuriousBot;
 import mixed.telega.executors.CallbackQueryExecutor;
 import mixed.telega.executors.TextExecutor;
-import mixed.telega.senders.MessageSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.api.objects.Update;

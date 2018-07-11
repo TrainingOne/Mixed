@@ -1,12 +1,11 @@
 package mixed.telega;
 
 import lombok.extern.slf4j.Slf4j;
+import mixed.telega.services.DecisionMaker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
-import mixed.telega.services.DecisionMaker;
-import mixed.telega.services.UpdatesRequestExecutor;
 
 @Service
 @Slf4j

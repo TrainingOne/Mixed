@@ -4,7 +4,6 @@ import com.github.messenger4j.Messenger;
 import com.github.messenger4j.exception.MessengerApiException;
 import com.github.messenger4j.exception.MessengerIOException;
 import com.github.messenger4j.webhook.event.QuickReplyMessageEvent;
-
 import mixed.facebook.functionality.MessageHolder;
 import mixed.facebook.senders.mediamessage.MediaMessageSender;
 import mixed.facebook.senders.templatemessage.GenericMessageSender;

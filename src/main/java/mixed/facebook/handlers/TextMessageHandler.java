@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import mixed.facebook.functionality.MessageHolder;
 import mixed.facebook.senders.mediamessage.MediaMessageSender;
 import mixed.facebook.senders.templatemessage.*;
-import mixed.facebook.senders.textmessage.*;
+import mixed.facebook.senders.textmessage.UserDetailsSender;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
