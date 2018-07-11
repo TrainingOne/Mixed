@@ -66,7 +66,7 @@ public class UpdatesRequestExecutor {
                 for (String lined : link) {
                     if (i < 1) {
 
-                        String fid = "http://virtu-well.com/wp-content/uploads/2017/07/pexels-photo-42379.jpeg";
+                        String fid = "http://www.grandplaymedia.com/img/work/lyricsfreak-logo.png";
                         messageSender.sendImageFromChat(fid, chatId.toString(),lined);
                         i++;
                     }
