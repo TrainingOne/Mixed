@@ -26,8 +26,6 @@ import java.util.stream.Collectors;
 @Slf4j
 public class UpdatesRequestExecutor {
 
-    private final FuriousBot furiousBot;
-
     private final MessageSender messageSender;
 
     private final PictureParserService photoParser;
@@ -37,12 +35,10 @@ public class UpdatesRequestExecutor {
     private final ReplyKeyboardBuilder replyKeyboardBuilder;
 
     @Autowired
-    public UpdatesRequestExecutor(FuriousBot furiousBot,
-                                  MessageSender messageSender,
+    public UpdatesRequestExecutor( MessageSender messageSender,
                                   PictureParserService photoParser,
                                   LyricParserService songsParser,
                                   ReplyKeyboardBuilder replyKeyboardBuilder) {
-        this.furiousBot = furiousBot;
         this.messageSender = messageSender;
         this.photoParser = photoParser;
         this.songsParser = songsParser;
