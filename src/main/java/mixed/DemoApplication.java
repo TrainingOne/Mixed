@@ -37,7 +37,7 @@ public class DemoApplication  {
         try {
             botapi.registerBot(furiousBot);
         } catch (TelegramApiException e) {
-            e.printStackTrace();
+            log.warn(e.getMessage());
         }
 
 

@@ -3,7 +3,7 @@ package mixed.facebook.controller;
 import com.github.messenger4j.Messenger;
 import com.github.messenger4j.exception.MessengerIOException;
 import com.github.messenger4j.exception.MessengerVerificationException;
-import mixed.facebook.*;
+import lombok.extern.slf4j.Slf4j;
 import mixed.facebook.handlers.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,13 +20,13 @@ import static java.util.Optional.of;
 
 @RestController
 @RequestMapping("/calltalk")
+@Slf4j
 public class PlatformCallBackController {
 
     /**
      * This is the main class for inbound and outbound communication with the Facebook Messenger Platform. The callback
      * handler is responsible for the webhook verification and processing of the inbound messages and events.
      */
-    private static final Logger logger = LoggerFactory.getLogger(PlatformCallBackController.class);
 
 
     private final Messenger messenger;
@@ -74,12 +74,12 @@ public class PlatformCallBackController {
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<String> verifyWebhook(@RequestParam(MODE_REQUEST_PARAM_NAME) final String mode,
                                                 @RequestParam(VERIFY_TOKEN_REQUEST_PARAM_NAME) final String verifyToken, @RequestParam(CHALLENGE_REQUEST_PARAM_NAME) final String challenge) {
-        logger.debug("Received Webhook verification request - mode: {} | verifyToken: {} | challenge: {}", mode, verifyToken, challenge);
+        log.debug("Received Webhook verification request - mode: {} | verifyToken: {} | challenge: {}", mode, verifyToken, challenge);
         try {
             this.messenger.verifyWebhook(mode, verifyToken);
             return ResponseEntity.ok(challenge);
         } catch (MessengerVerificationException e) {
-            logger.warn("Webhook verification failed: {}", e.getMessage());
+            log.warn("Webhook verification failed: {}", e.getMessage());
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.getMessage());
         }
     }
@@ -89,7 +89,7 @@ public class PlatformCallBackController {
      */
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Void> handleCallback(@RequestBody final String payload, @RequestHeader(SIGNATURE_HEADER_NAME) final String signature) {
-        logger.debug("Received Messenger Platform callback - payload: {} | signature: {}", payload, signature);
+        log.debug("Received Messenger Platform callback - payload: {} | signature: {}", payload, signature);
         try {
             this.messenger.onReceiveEvents(payload, of(signature), event -> {
                 if (event.isTextMessageEvent()) {
@@ -100,9 +100,9 @@ public class PlatformCallBackController {
                     try {
                         quickReplyHandler.handleQuickReplyMessageEvent(event.asQuickReplyMessageEvent());
                     } catch (IOException e) {
-                        e.printStackTrace();
+                       log.warn(e.getMessage());
                     } catch (MessengerIOException e) {
-                        e.printStackTrace();
+                        log.warn(e.getMessage());
                     }
                 } else if (event.isPostbackEvent()) {
                     postBackHandler.handlePostbackEvent(event.asPostbackEvent());
@@ -120,10 +120,10 @@ public class PlatformCallBackController {
                     fallBackHandler.handleFallbackEvent(event);
                 }
             });
-            logger.debug("Processed callback payload successfully");
+            log.debug("Processed callback payload successfully");
             return ResponseEntity.status(HttpStatus.OK).build();
         } catch (MessengerVerificationException e) {
-            logger.warn("Processing of callback payload failed: {}", e.getMessage());
+            log.warn("Processing of callback payload failed: {}", e.getMessage());
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
         }
     }
