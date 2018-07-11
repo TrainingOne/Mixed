@@ -28,9 +28,9 @@ public class QuickReplaySender {
 
     public void sendQuickReply(String recipientId) throws MessengerApiException, MessengerIOException {
 
-        final TextQuickReply quickReplyMusic = TextQuickReply.create("Music", MUSIC_ACTION);
-        final TextQuickReply quickReplyPictures = TextQuickReply.create("Picture", PICTURE_ACTION);
-        final List<QuickReply> quickReplies = Arrays.asList(quickReplyMusic, quickReplyPictures);
+        final TextQuickReply quickReplyLyrics = TextQuickReply.create("Find Lyrics", MUSIC_ACTION);
+        final TextQuickReply quickReplyPictures = TextQuickReply.create("Find Picture", PICTURE_ACTION);
+        final List<QuickReply> quickReplies = Arrays.asList(quickReplyPictures, quickReplyLyrics);
 
         final TextMessage message = TextMessage.create("What are you looking for?", of(quickReplies), empty());
         final MessagePayload payload = MessagePayload.create(recipientId, MessagingType.RESPONSE, message);
