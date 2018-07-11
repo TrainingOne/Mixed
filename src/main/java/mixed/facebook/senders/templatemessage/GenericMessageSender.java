@@ -43,7 +43,7 @@ public class GenericMessageSender {
             riftButtons.add(UrlButton.create("Open song lyrics", new URL(songs.get(0).getLink())));
             final List<Element> elements = new ArrayList<>();
             elements.add(
-                    Element.create(songs.get(0).getName(), of("Enjoy your favorite song lyrics"), of(new URL("http://static.tumblr.com/330f24c529d9161c44627308c10a3f7d/wx3alho/Y9xmotfpm/tumblr_static_profile_icon.jpg")), empty(), of(riftButtons)));
+                    Element.create(songs.get(0).getName(), of("Enjoy your favorite song lyrics"), of(new URL("http://www.grandplaymedia.com/img/work/lyricsfreak-logo.png")), empty(), of(riftButtons)));
             final GenericTemplate genericTemplate = GenericTemplate.create(elements);
             final TemplateMessage templateMessage = TemplateMessage.create(genericTemplate);
             final MessagePayload messagePayload = MessagePayload.create(recipientId, MessagingType.RESPONSE, templateMessage);
