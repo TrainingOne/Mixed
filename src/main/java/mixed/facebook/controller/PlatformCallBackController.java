@@ -19,7 +19,7 @@ import static java.util.Optional.of;
 
 
 @RestController
-@RequestMapping("/callback")
+@RequestMapping("/calltalk")
 public class PlatformCallBackController {
 
     /**

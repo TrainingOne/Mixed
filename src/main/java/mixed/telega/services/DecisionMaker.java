@@ -14,26 +14,14 @@ import org.telegram.telegrambots.api.objects.Update;
 @Slf4j
 public class DecisionMaker {
 
-    private final UpdatesRequestExecutor executor;
-
-    private final FuriousBot furiousBot;
-
     private final CallbackQueryExecutor callbackQueryExecutor;
-
-    private final MessageSender messageSender;
 
     private final TextExecutor textExecutor;
 
     @Autowired
-    public DecisionMaker(UpdatesRequestExecutor executor,
-                         FuriousBot furiousBot,
-                         MessageSender messageSender ,
-                         CallbackQueryExecutor callbackQueryExecutor,
+    public DecisionMaker( CallbackQueryExecutor callbackQueryExecutor,
                          TextExecutor textExecutor)
     {
-        this.executor = executor;
-        this.furiousBot = furiousBot;
-        this.messageSender = messageSender;
         this.callbackQueryExecutor = callbackQueryExecutor;
         this.textExecutor = textExecutor;
     }
@@ -50,7 +38,6 @@ public class DecisionMaker {
 
     public void executePhoto(Update update){
 
-        executor.resendPhotoFromChat(update);
 
     }
 

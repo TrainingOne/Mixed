@@ -11,7 +11,7 @@ import mixed.telega.services.UpdatesRequestExecutor;
 @Service
 @Slf4j
 public class FuriousBot extends TelegramLongPollingBot {
-    
+
     @Autowired
     private DecisionMaker decisionMaker;
 
