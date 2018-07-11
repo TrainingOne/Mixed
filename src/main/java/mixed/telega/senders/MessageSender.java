@@ -19,14 +19,13 @@ import org.telegram.telegrambots.exceptions.TelegramApiRequestException;
 @Slf4j
 public class MessageSender {
 
-    private final FuriousBot furiousBot;
+    //private final FuriousBot furiousBot;
 
     private final InlineKeyboardBuilder inlineKeyboardBuilder;
 
     @Autowired
-    public MessageSender (final FuriousBot furiousBot,
-                          final InlineKeyboardBuilder inlineKeyboardBuilder){
-        this.furiousBot = furiousBot;
+    public MessageSender (final InlineKeyboardBuilder inlineKeyboardBuilder){
+        //this.furiousBot = furiousBot;
         this.inlineKeyboardBuilder = inlineKeyboardBuilder;
     }
 
@@ -34,6 +33,7 @@ public class MessageSender {
         try {
             // Execute the method
             log.info("Trying to send " + f_id);
+            FuriousBot furiousBot = new FuriousBot();
             furiousBot.sendPhoto( new SendPhoto().setPhoto(f_id).setChatId(chatId).setCaption(caption));
             log.info(f_id +" has been suqsessfully sended");
         } catch (TelegramApiRequestException exception) {
@@ -46,6 +46,7 @@ public class MessageSender {
 
     public void sendMessage(Long chat_id, String text) {
         try {
+            FuriousBot furiousBot = new FuriousBot();
             furiousBot.execute(new SendMessage().setChatId(chat_id).setText(text));
         } catch (TelegramApiException e){
             e.printStackTrace();
@@ -55,6 +56,7 @@ public class MessageSender {
 
     public void sendMessage(SendMessage msg) {
         try {
+            FuriousBot furiousBot = new FuriousBot();
             furiousBot.execute(msg);
         } catch (TelegramApiException e){
             e.printStackTrace();
@@ -65,6 +67,7 @@ public class MessageSender {
 
     public void forwardMessage(Integer message_id, Long chat_id_from, Long chat_id_to){
         try {
+            FuriousBot furiousBot = new FuriousBot();
             furiousBot.execute(new ForwardMessage().setFromChatId(chat_id_from).setChatId(chat_id_to).setMessageId(message_id));
         }catch (TelegramApiException e){
             log.info(e.getMessage());
@@ -79,6 +82,7 @@ public class MessageSender {
         try{
             log.info("We are in send reply to image");
 
+            FuriousBot furiousBot = new FuriousBot();
 
             furiousBot.execute( sendMessage.setReplyToMessageId(reply_to));
 
@@ -93,6 +97,8 @@ public class MessageSender {
         InlineKeyboardMarkup markupInline = inlineKeyboardBuilder.buildInlineKeyboard(update.getMessage().getText());
         sendMessage.setReplyMarkup(markupInline);
         try {
+
+            FuriousBot furiousBot = new FuriousBot();
             furiousBot.execute(sendMessage); // Sending our message object to user
         } catch (TelegramApiException e) {
             e.printStackTrace();
