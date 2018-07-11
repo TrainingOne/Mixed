@@ -1,0 +1,10 @@
+messenger4j:
+  appSecret: 9131a71ccf438cb37065c96ac870f4b0
+  verifyToken : mytokenpdt
+  pageAccessToken: EAADMAjbR2AkBAE10PlBZBUByEsUaXpiM7QN6ZBAZBXB7eo6oNwOUdvABZAB8D56dz9fR8XjyzTKwuGsZCv0LM4P4ZBUYayhqc8jJbyfpZCifbBLcnBI4rbSJ2ZBwXZCCWjMKQ29d4p6t9bdIVTzmfPpUrU1WLbZCxzSjtrZBSt6TtN0vQZDZD
+
+logging:
+  level:
+    com:
+      github:
+        messenger4j: INFO
