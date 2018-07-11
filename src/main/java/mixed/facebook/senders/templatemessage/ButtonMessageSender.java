@@ -35,7 +35,7 @@ public class ButtonMessageSender {
     public void sendButtonMessage(String recipientId) throws MessengerApiException, MessengerIOException, MalformedURLException {
         final List<Button> buttons = Arrays.asList(
                 UrlButton.create("Open our website", new URL("https://google.com"), of(WebviewHeightRatio.TALL), of(false), empty(), empty()),
-                UrlButton.create("TOP 100 Music", new URL("https://www.musicoutfitters.com/top-100-songs.htm")), CallButton.create("Call Representative", "+15105551234"));
+                UrlButton.create("TOP 100 Music", new URL("https://www.musicoutfitters.com/top-100-songs.htm")), CallButton.create("\uD83D\uDCDE Call Representative", "+15105551234"));
 
         final ButtonTemplate buttonTemplate = ButtonTemplate.create("How can we help you", buttons);
         final TemplateMessage templateMessage = TemplateMessage.create(buttonTemplate);
