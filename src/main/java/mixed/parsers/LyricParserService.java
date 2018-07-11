@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Getter
@@ -29,15 +30,22 @@ public class LyricParserService {
         doc.select("td > a.song").forEach(element ->
                 element.getElementsByTag("a").forEach(tag ->
                         songs.add(tag.text())));
+
         doc.select("a.song").forEach(song ->
                 link.add("http://www.lyricsfreak.com" + song.attr("href")));
 
         if (songs.isEmpty()) {
             return lyrics;
         } else {
-            lyricPlain.setName(songs.get(0));
-            lyricPlain.setLink(link.get(0));
-            lyrics.add(lyricPlain);
+            Iterator iterator = songs.iterator();
+
+            link.forEach(element -> {
+
+                lyricPlain.setLink(element);
+                lyricPlain.setName((String) iterator.next());
+                lyrics.add(lyricPlain);
+
+            });
             return lyrics;
         }
     }

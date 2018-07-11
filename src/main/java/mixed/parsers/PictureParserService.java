@@ -1,5 +1,6 @@
 package mixed.parsers;
 
+import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Slf4j
 public class PictureParserService {
 
     public List<String> getPhotoesUrlsByKeyWord(String key){
@@ -22,16 +24,18 @@ public class PictureParserService {
             doc = Jsoup.connect(URL + key)
                     .referrer(URL + key).get();
         } catch (IOException e) {
-            e.printStackTrace();
+            log.warn(e.getMessage());
         }
 
-        for (Element tracks : doc.getElementsByClass("photo-item")) {
-            for (Element tracs : tracks.getElementsByTag("a")){
-                for (Element  element : tracs.getElementsByTag("img")) {
-                    urls.add(element.attr("src"));
-                }
-            }
-        }
+        doc.getElementsByClass("photo-item").forEach(element ->
+                element.getElementsByTag("a").forEach(tag ->
+                        tag.getElementsByTag("img").forEach(img ->
+                        {
+                            urls.add(img.attr("src"));
+                            log.info(img.attr("src"));
+
+                        })));
+
 
         return urls;
 

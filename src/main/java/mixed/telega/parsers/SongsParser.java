@@ -36,6 +36,7 @@ public class SongsParser {
 
             doc.select("a.song").forEach(song ->
                     link.add("http://www.lyricsfreak.com" + song.attr("href")));
+
         }catch (IOException e){
             log.info(e.getMessage());
         }
